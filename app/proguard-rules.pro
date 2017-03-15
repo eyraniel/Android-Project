@@ -25,3 +25,4 @@
 #-renamesourcefileattribute SourceFile
 
 -keep class ru.tinkoff.shishkova.tfsproject.Response { *; }
+-dontwarn com.squareup.okhttp.**
