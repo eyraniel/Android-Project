@@ -1,5 +1,6 @@
 package ru.tinkoff.shishkova.tfsproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         adapter = new DialogsAdapter(createDataset(), new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(MainActivity.this, "position = " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+                openDialog();
             }
         });
         recyclerView.setAdapter(adapter);
@@ -48,5 +50,10 @@ public class MainActivity extends AppCompatActivity {
         list.add(new DialogItem("title", "desc"));
         list.add(new DialogItem("title", "desc"));
         return list;
+    }
+
+    private void openDialog() {
+        Intent intent = new Intent(this, DialogActivity.class);
+        startActivity(intent);
     }
 }

@@ -15,8 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/login"
-        android:maxLines="1"
-        android:singleLine="true" />
+        android:maxLines="1" />
 
     <EditText
         android:id="@+id/edit_text_password"
@@ -26,8 +25,7 @@
         android:imeActionId="@+id/login"
         android:imeOptions="actionUnspecified"
         android:inputType="textPassword"
-        android:maxLines="1"
-        android:singleLine="true" />
+        android:maxLines="1" />
 
     <Button
         android:id="@+id/btn_enter"
