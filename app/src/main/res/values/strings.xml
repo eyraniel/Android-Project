@@ -6,4 +6,8 @@
     <string name="send">Отправить</string>
     <string name="back">Назад</string>
     <string name="enter">Войти</string>
+    <string name="menu_dialogs">Диалоги</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_about">О приложении</string>
+    <string name="menu_exit">Выход</string>
 </resources>
