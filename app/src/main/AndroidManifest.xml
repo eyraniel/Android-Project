@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DialogActivity" />
+        <activity android:name=".AboutActivity" />
     </application>
 
 </manifest>
