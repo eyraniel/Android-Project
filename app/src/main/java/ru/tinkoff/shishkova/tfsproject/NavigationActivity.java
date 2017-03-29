@@ -39,7 +39,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 addFragment(settingsFragment);
                 break;
             case R.id.nav_about:
-                StubFragment aboutFragment = StubFragment.newInstance("О приложении");
+                AboutFragment aboutFragment = AboutFragment.newInstance();
                 addFragment(aboutFragment);
                 break;
             case R.id.nav_exit:
@@ -80,6 +80,12 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     }
 
     private void addFragment(StubFragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction = fragmentTransaction.replace(R.id.content_navigation, fragment);
+        fragmentTransaction.commit();
+    }
+
+    private void addFragment(AboutFragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction = fragmentTransaction.replace(R.id.content_navigation, fragment);
         fragmentTransaction.commit();
