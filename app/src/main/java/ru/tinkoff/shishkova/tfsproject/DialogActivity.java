@@ -19,7 +19,7 @@ public class DialogActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private Button sendButton;
-    private Button backButton;
+    //private Button backButton;
     private EditText message;
 
     @Override
@@ -38,13 +38,13 @@ public class DialogActivity extends AppCompatActivity {
                 }
             }
         });
-        backButton = (Button) findViewById(R.id.btn_back);
+        /*backButton = (Button) findViewById(R.id.btn_back);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 backScreen();
             }
-        });
+        });*/
         initRecyclerView();
     }
 
@@ -69,8 +69,9 @@ public class DialogActivity extends AppCompatActivity {
         return list;
     }
 
+    /*
     private void backScreen() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }
+    }*/
 }

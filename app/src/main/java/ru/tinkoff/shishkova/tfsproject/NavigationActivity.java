@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -31,7 +32,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_dialogs:
-                StubFragment dialogsFragment = StubFragment.newInstance("Диалоги");
+                DialogsFragment dialogsFragment = DialogsFragment.newInstance();
                 addFragment(dialogsFragment);
                 break;
             case R.id.nav_settings:
@@ -79,13 +80,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         toggle.syncState();
     }
 
-    private void addFragment(StubFragment fragment) {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction = fragmentTransaction.replace(R.id.content_navigation, fragment);
-        fragmentTransaction.commit();
-    }
-
-    private void addFragment(AboutFragment fragment) {
+    private void addFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction = fragmentTransaction.replace(R.id.content_navigation, fragment);
         fragmentTransaction.commit();
