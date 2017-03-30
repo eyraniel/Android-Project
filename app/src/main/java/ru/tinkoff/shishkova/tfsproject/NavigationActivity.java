@@ -1,5 +1,6 @@
 package ru.tinkoff.shishkova.tfsproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +13,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -36,7 +39,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 addFragment(dialogsFragment);
                 break;
             case R.id.nav_settings:
-                StubFragment settingsFragment = StubFragment.newInstance("Настройки");
+                SettingsFragment settingsFragment = SettingsFragment.newInstance();
                 addFragment(settingsFragment);
                 break;
             case R.id.nav_about:
@@ -72,6 +75,13 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             navigationView.getMenu().getItem(MENU_DIALOGS).setChecked(true);
             onNavigationItemSelected(navigationView.getMenu().getItem(MENU_DIALOGS));
         }
+
+        String login;
+        Intent intent = getIntent();
+        login = intent.getStringExtra(LoginActivity.sharedLogin);
+        View headerLayout = navigationView.getHeaderView(0);
+        TextView text = (TextView) headerLayout.findViewById(R.id.textView);
+        text.setText(login);
     }
 
     @Override
@@ -82,6 +92,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
     private void addFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         fragmentTransaction = fragmentTransaction.replace(R.id.content_navigation, fragment);
         fragmentTransaction.commit();
     }

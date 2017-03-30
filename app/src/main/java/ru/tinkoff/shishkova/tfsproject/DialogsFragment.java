@@ -44,7 +44,7 @@ public class DialogsFragment extends Fragment {
         adapter = new DialogsAdapter(createDataset(), new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(getActivity(), String.valueOf(position), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), String.valueOf(position), Toast.LENGTH_SHORT).show();
                 openDialog();
             }
         });
