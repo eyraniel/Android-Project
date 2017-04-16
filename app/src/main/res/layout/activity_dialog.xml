@@ -16,34 +16,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:layout_above="@+id/message"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/send_msg_btn" />
 
-    <EditText
-        android:id="@+id/message"
+    <ru.tinkoff.shishkova.tfsproject.ui.widgets.SendMessageButton
+        android:id="@+id/send_msg_btn"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:hint="@string/message"
-        android:layout_above="@+id/btn_send"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:id="@+id/btn_send"
-        android:layout_width="110dp"
-        android:layout_height="50dp"
-        android:layout_gravity="right"
-        android:text="@string/send"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_height="wrap_content"
+        android:minHeight="105dp"
+        android:layout_alignParentBottom="true" />
 
     <Button
         android:id="@+id/btn_back"
         android:layout_width="110dp"
         android:layout_height="50dp"
-        android:layout_gravity="left"
         android:text="@string/back"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"

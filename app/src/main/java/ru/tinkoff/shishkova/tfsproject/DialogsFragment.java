@@ -55,12 +55,12 @@ public class DialogsFragment extends Fragment {
 
     private List<DialogItem> createDataset() {
         List<DialogItem> list = new ArrayList<>();
-        list.add(new DialogItem("title", "desc"));
-        list.add(new DialogItem("title", "desc"));
-        list.add(new DialogItem("title", "desc"));
-        list.add(new DialogItem("title", "desc"));
-        list.add(new DialogItem("title", "desc"));
-        list.add(new DialogItem("title", "desc"));
+        list.add(new DialogItem("title", "desc", 1));
+        list.add(new DialogItem("title", "desc", 0));
+        list.add(new DialogItem("title", "desc", 1));
+        list.add(new DialogItem("title", "desc", 1));
+        list.add(new DialogItem("title", "desc", 0));
+        list.add(new DialogItem("title", "desc", 1));
         return list;
     }
 

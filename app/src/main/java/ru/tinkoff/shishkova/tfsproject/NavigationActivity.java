@@ -67,13 +67,13 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
         drawer.addDrawerListener(toggle);
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         if (savedInstanceState == null) {
             navigationView.getMenu().getItem(MENU_DIALOGS).setChecked(true);
             onNavigationItemSelected(navigationView.getMenu().getItem(MENU_DIALOGS));
+
         }
 
         String login;

@@ -1,50 +1,54 @@
 package ru.tinkoff.shishkova.tfsproject;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.tinkoff.shishkova.tfsproject.ui.widgets.SendMessageButton;
+
 public class DialogActivity extends AppCompatActivity {
 
-    final List<MessageItem> list = new ArrayList<>();
+    private List<MessageItem> list;
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    private Button sendButton;
+    private SendMessageButton sendButton;
     private Button backButton;
-    private EditText message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
-        message = (EditText) findViewById(R.id.message);
-        sendButton = (Button) findViewById(R.id.btn_send);
-        sendButton.setOnClickListener(new View.OnClickListener() {
+
+        sendButton = (SendMessageButton) findViewById(R.id.send_msg_btn);
+        backButton = (Button) findViewById(R.id.btn_back);
+
+        sendButton.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (message.getText().length() > 0) {
-                    list.add(0, new MessageItem(message.getText().toString(), 0));
-                    adapter.notifyItemInserted(0);
-                    recyclerView.scrollToPosition(0);
+                if (sendButton.message.getText().toString().length() > 0) {
+                    if (!list.isEmpty()) {
+                        list.add(0, new MessageItem(sendButton.message.getText().toString()));
+                        sendButton.message.setText("");
+                        adapter.notifyItemInserted(0);
+                        recyclerView.scrollToPosition(0);
+                    }
                 }
             }
         });
-        backButton = (Button) findViewById(R.id.btn_back);
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 backScreen();
             }
         });
+
         initRecyclerView();
     }
 
@@ -59,18 +63,17 @@ public class DialogActivity extends AppCompatActivity {
     }
 
     private List<MessageItem> createDataset() {
-        List<MessageItem> list = new ArrayList<>();
-        list.add(new MessageItem("blabla", 1));
-        list.add(new MessageItem("blablabla", 0));
-        list.add(new MessageItem("blabla", 0));
-        list.add(new MessageItem("blablablablabla", 1));
-        list.add(new MessageItem("bla", 0));
-        list.add(new MessageItem("blabla", 1));
+        list = new ArrayList<>();
+        list.add(new MessageItem("blabla", "John Doe", 2));
+        list.add(new MessageItem("blablabla"));
+        list.add(new MessageItem("blabla"));
+        list.add(new MessageItem("blablablablabla", "Jane Doe", 2));
+        list.add(new MessageItem("bla"));
+        list.add(new MessageItem("blabla", "John Doe", 2));
         return list;
     }
 
     private void backScreen() {
-        Intent intent = new Intent(this, NavigationActivity.class);
-        startActivity(intent);
+        finish();
     }
 }
