@@ -10,22 +10,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ru.tinkoff.shishkova.tfsproject.LoginActivity">
 
-    <EditText
-        android:id="@+id/edit_text_login"
+    <ru.tinkoff.shishkova.tfsproject.ui.widgets.LoginField
+        android:id="@+id/login_field"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/login"
-        android:maxLines="1" />
-
-    <EditText
-        android:id="@+id/edit_text_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/password"
-        android:imeActionId="@+id/login"
-        android:imeOptions="actionUnspecified"
-        android:inputType="textPassword"
-        android:maxLines="1" />
+        android:layout_height="wrap_content" />
 
     <ru.tinkoff.shishkova.tfsproject.ui.widgets.ProgressButton
         android:id="@+id/btn_enter"

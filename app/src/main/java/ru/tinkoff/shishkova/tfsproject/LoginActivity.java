@@ -7,12 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import ru.tinkoff.shishkova.tfsproject.ui.widgets.LoginField;
 import ru.tinkoff.shishkova.tfsproject.ui.widgets.ProgressButton;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText login;
-    private EditText password;
+    private LoginField loginField;
     private ProgressButton button;
 
     private LoginTask task = new LoginTask();
@@ -23,8 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        login = (EditText) findViewById(R.id.edit_text_login);
-        password = (EditText) findViewById(R.id.edit_text_password);
+        loginField = (LoginField) findViewById(R.id.login_field);
         button = (ProgressButton) findViewById(R.id.btn_enter);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void startNextScreen() {
         Intent intent = new Intent(this, NavigationActivity.class);
-        intent.putExtra(sharedLogin, login.getText().toString());
+        intent.putExtra(sharedLogin, loginField.login.getText().toString());
         startActivity(intent);
     }
 
