@@ -5,7 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class DialogActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private SendMessageButton sendButton;
-    private Button backButton;
+    private ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class DialogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dialog);
 
         sendButton = (SendMessageButton) findViewById(R.id.send_msg_btn);
-        backButton = (Button) findViewById(R.id.btn_back);
+        backButton = (ImageButton) findViewById(R.id.btn_back);
 
         sendButton.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,12 +65,12 @@ public class DialogActivity extends AppCompatActivity {
 
     private List<MessageItem> createDataset() {
         list = new ArrayList<>();
-        list.add(new MessageItem("blabla", "John Doe", 2));
+        list.add(new MessageItem("blabla", "Captain America", 2));
         list.add(new MessageItem("blablabla"));
         list.add(new MessageItem("blabla"));
-        list.add(new MessageItem("blablablablabla", "Jane Doe", 2));
+        list.add(new MessageItem("blablablablabla", "Iron Man", 2));
         list.add(new MessageItem("bla"));
-        list.add(new MessageItem("blabla", "John Doe", 2));
+        list.add(new MessageItem("blabla", "Loki", 2));
         return list;
     }
 

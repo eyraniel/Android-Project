@@ -5,8 +5,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import ru.tinkoff.shishkova.tfsproject.R;
@@ -14,7 +14,7 @@ import ru.tinkoff.shishkova.tfsproject.R;
 public class SendMessageButton extends LinearLayout {
 
     public EditText message;
-    public Button button;
+    public ImageButton button;
 
     public SendMessageButton(Context context) {
         super(context);
@@ -33,7 +33,7 @@ public class SendMessageButton extends LinearLayout {
     private void init(AttributeSet attrs) {
         LayoutInflater.from(getContext()).inflate(R.layout.widget_send_message_button, this);
         message = (EditText) findViewById(R.id.message);
-        button = (Button) findViewById(R.id.btn_send);
+        button = (ImageButton) findViewById(R.id.btn_send);
         button.setEnabled(false);
 
         message.addTextChangedListener(new TextWatcher() {
@@ -49,9 +49,11 @@ public class SendMessageButton extends LinearLayout {
             public void afterTextChanged(Editable s) {
                 if(s.toString().length() > 0){
                     button.setEnabled(true);
+                    button.setImageResource(R.drawable.send);
                 }
                 else{
                     button.setEnabled(false);
+                    button.setImageResource(R.drawable.send_inactive);
                 }
             }
         });
