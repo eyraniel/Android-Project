@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -76,9 +77,9 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
         }
 
-        String login;
         Intent intent = getIntent();
-        login = intent.getStringExtra(LoginActivity.sharedLogin);
+        String login;
+        login = intent.getExtras().getString("LOGIN","login");
         View headerLayout = navigationView.getHeaderView(0);
         TextView text = (TextView) headerLayout.findViewById(R.id.textView);
         text.setText(login);
