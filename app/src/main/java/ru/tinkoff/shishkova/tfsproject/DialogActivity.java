@@ -1,7 +1,9 @@
 package ru.tinkoff.shishkova.tfsproject;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +19,7 @@ import ru.tinkoff.shishkova.tfsproject.ui.widgets.SendMessageButton;
 public class DialogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<MessageItem>> {
 
     private List<MessageItem> list = new ArrayList<>();
+    private static List<MessageItem> data = new ArrayList<>();
     private static final int LOADER_ID = 1;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -31,6 +34,8 @@ public class DialogActivity extends AppCompatActivity implements LoaderManager.L
 
         loader = new DialogLoader(this);
         getSupportLoaderManager().initLoader(LOADER_ID, null, this);
+
+        list = data;
 
         sendButton = (SendMessageButton) findViewById(R.id.send_msg_btn);
         backButton = (ImageButton) findViewById(R.id.btn_back);
@@ -86,13 +91,86 @@ public class DialogActivity extends AppCompatActivity implements LoaderManager.L
 
     @Override
     public void onLoadFinished(Loader<List<MessageItem>> loader, List<MessageItem> data) {
-        this.list.addAll(0, data);
-        adapter.notifyItemRangeInserted(0, data.size());
         recyclerView.scrollToPosition(0);
     }
 
     @Override
     public void onLoaderReset(Loader<List<MessageItem>> loader) {
         adapter.notifyDataSetChanged();
+    }
+
+    public static class DialogLoader extends AsyncTaskLoader<List<MessageItem>> {
+
+        public DialogLoader(Context context) {
+            super(context);
+        }
+
+        @Override
+        public List<MessageItem> loadInBackground() {
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            data = createDataset();
+            return data;
+        }
+
+        @Override
+        public void deliverResult(List<MessageItem> newData) {
+
+            data = newData;
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if(isStarted()){
+                super.deliverResult(newData);
+            }
+        }
+
+        @Override
+        protected void onStartLoading() {
+            if(data != null){
+                deliverResult(data);
+            }
+
+            if(takeContentChanged() || data == null){
+                forceLoad();
+            }
+        }
+
+        @Override
+        protected void onStopLoading() {
+            cancelLoad();
+        }
+
+        @Override
+        public void onCanceled(List<MessageItem> data) {
+            super.onCanceled(data);
+        }
+
+        @Override
+        protected void onReset() {
+            super.onReset();
+            onStopLoading();
+            data = null;
+        }
+    }
+
+    private static List<MessageItem> createDataset() {
+        List<MessageItem> initData = new ArrayList<>();
+        initData.add(new MessageItem("blabla", "Captain America", 2));
+        initData.add(new MessageItem("blablabla"));
+        initData.add(new MessageItem("blabla"));
+        initData.add(new MessageItem("blablablablabla", "Iron Man", 2));
+        initData.add(new MessageItem("bla"));
+        initData.add(new MessageItem("blabla", "Loki", 2));
+        return initData;
     }
 }

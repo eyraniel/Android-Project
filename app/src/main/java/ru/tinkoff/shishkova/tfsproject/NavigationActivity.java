@@ -81,8 +81,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         String login;
         login = intent.getExtras().getString("LOGIN","login");
         View headerLayout = navigationView.getHeaderView(0);
-        TextView text = (TextView) headerLayout.findViewById(R.id.textView);
-        text.setText(login);
+        TextView textLogin = (TextView) headerLayout.findViewById(R.id.textLogin);
+        textLogin.setText(login);
     }
 
     @Override
