@@ -10,5 +10,14 @@
         android:id="@+id/recycler_view_dialogs"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/add_dialog"
         android:scrollbars="vertical" />
+
+    <Button
+        android:id="@+id/add_dialog"
+        android:layout_alignParentBottom="true"
+        android:text="@string/add"
+        android:layout_width="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

@@ -10,6 +10,7 @@
     <string name="menu_settings">Настройки</string>
     <string name="menu_about">О приложении</string>
     <string name="menu_exit">Выход</string>
+    <string name="add">Добавить</string>
     <string name="about_project">Project for Tinkoff Fintech School</string>
     <string name="about_author">Author: Tatyana Shishkova</string>
 </resources>
