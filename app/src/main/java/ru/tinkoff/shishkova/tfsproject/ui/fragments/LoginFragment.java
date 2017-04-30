@@ -1,4 +1,4 @@
-package ru.tinkoff.shishkova.tfsproject;
+package ru.tinkoff.shishkova.tfsproject.ui.fragments;
 
 import android.content.Context;
 import android.os.Bundle;

@@ -1,9 +1,10 @@
-package ru.tinkoff.shishkova.tfsproject;
+package ru.tinkoff.shishkova.tfsproject.ui.activities;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import java.lang.ref.WeakReference;
+
+import ru.tinkoff.shishkova.tfsproject.ui.fragments.LoginFragment;
 
 /**
  * @author Sergey Boishtyan

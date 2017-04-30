@@ -1,4 +1,4 @@
-package ru.tinkoff.shishkova.tfsproject;
+package ru.tinkoff.shishkova.tfsproject.ui.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ru.tinkoff.shishkova.tfsproject.ui.items.DialogItem;
+import ru.tinkoff.shishkova.tfsproject.ui.adapters.DialogsAdapter;
+import ru.tinkoff.shishkova.tfsproject.OnItemClickListener;
+import ru.tinkoff.shishkova.tfsproject.R;
+import ru.tinkoff.shishkova.tfsproject.ui.activities.DialogActivity;
 
 public class DialogsFragment extends Fragment {
 

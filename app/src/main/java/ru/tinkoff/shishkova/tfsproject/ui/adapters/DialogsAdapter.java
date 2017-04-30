@@ -1,4 +1,4 @@
-package ru.tinkoff.shishkova.tfsproject;
+package ru.tinkoff.shishkova.tfsproject.ui.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+
+import ru.tinkoff.shishkova.tfsproject.ui.items.DialogItem;
+import ru.tinkoff.shishkova.tfsproject.OnItemClickListener;
+import ru.tinkoff.shishkova.tfsproject.R;
 
 public class DialogsAdapter extends RecyclerView.Adapter<DialogsAdapter.ViewHolder> {
 

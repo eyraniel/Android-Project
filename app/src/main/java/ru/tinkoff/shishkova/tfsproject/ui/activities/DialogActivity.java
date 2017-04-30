@@ -1,4 +1,4 @@
-package ru.tinkoff.shishkova.tfsproject;
+package ru.tinkoff.shishkova.tfsproject.ui.activities;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,11 +14,14 @@ import android.widget.ImageButton;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.tinkoff.shishkova.tfsproject.ui.adapters.MessageAdapter;
+import ru.tinkoff.shishkova.tfsproject.ui.items.MessageItem;
+import ru.tinkoff.shishkova.tfsproject.R;
 import ru.tinkoff.shishkova.tfsproject.ui.widgets.SendMessageButton;
 
 public class DialogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<MessageItem>> {
 
-    private List<MessageItem> list = new ArrayList<>();
+    private List<MessageItem> list;
     private static List<MessageItem> data = new ArrayList<>();
     private static final int LOADER_ID = 1;
     private RecyclerView recyclerView;
@@ -35,7 +38,11 @@ public class DialogActivity extends AppCompatActivity implements LoaderManager.L
         loader = new DialogLoader(this);
         getSupportLoaderManager().initLoader(LOADER_ID, null, this);
 
-        list = data;
+        if (data != null) {
+            list = data;
+        } else {
+            list = new ArrayList<>();
+        }
 
         sendButton = (SendMessageButton) findViewById(R.id.send_msg_btn);
         backButton = (ImageButton) findViewById(R.id.btn_back);
@@ -69,8 +76,10 @@ public class DialogActivity extends AppCompatActivity implements LoaderManager.L
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setReverseLayout(true);
         recyclerView.setLayoutManager(layoutManager);
-        if (list.isEmpty()) {
-            list = loader.loadInBackground();
+        if (list != null) {
+            if (list.isEmpty()) {
+                list = loader.loadInBackground();
+            }
         }
         adapter = new MessageAdapter(list);
         recyclerView.setAdapter(adapter);

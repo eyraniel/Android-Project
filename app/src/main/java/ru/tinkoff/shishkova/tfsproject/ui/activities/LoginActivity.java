@@ -1,17 +1,16 @@
-package ru.tinkoff.shishkova.tfsproject;
+package ru.tinkoff.shishkova.tfsproject.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.AsyncTaskLoader;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import ru.tinkoff.shishkova.tfsproject.ui.fragments.LoginFragment;
+import ru.tinkoff.shishkova.tfsproject.ui.activities.LoginTask;
+import ru.tinkoff.shishkova.tfsproject.R;
 import ru.tinkoff.shishkova.tfsproject.ui.widgets.LoginField;
-import ru.tinkoff.shishkova.tfsproject.ui.widgets.LoginService;
 import ru.tinkoff.shishkova.tfsproject.ui.widgets.ProgressButton;
 
 public class LoginActivity extends AppCompatActivity implements LoginFragment.LoginListener {

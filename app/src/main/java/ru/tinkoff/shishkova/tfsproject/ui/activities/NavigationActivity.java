@@ -1,4 +1,4 @@
-package ru.tinkoff.shishkova.tfsproject;
+package ru.tinkoff.shishkova.tfsproject.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
+
+import ru.tinkoff.shishkova.tfsproject.ui.fragments.AboutFragment;
+import ru.tinkoff.shishkova.tfsproject.ui.fragments.DialogsFragment;
+import ru.tinkoff.shishkova.tfsproject.R;
+import ru.tinkoff.shishkova.tfsproject.ui.fragments.SettingsFragment;
 
 public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

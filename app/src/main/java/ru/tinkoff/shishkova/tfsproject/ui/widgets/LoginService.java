@@ -5,7 +5,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 
-import ru.tinkoff.shishkova.tfsproject.LoginActivity;
+import ru.tinkoff.shishkova.tfsproject.ui.activities.LoginActivity;
 
 import static android.app.Activity.RESULT_OK;
 

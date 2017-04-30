@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_about_project"
+        android:layout_width="320dp"
+        android:layout_height="25dp"
+        android:textSize="20sp"
+        android:text="@string/about_project"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="20dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/about_project_background" />
+
+    <TextView
+        android:id="@+id/text_about_author"
+        android:layout_width="260dp"
+        android:layout_height="25dp"
+        android:textSize="20sp"
+        android:text="@string/about_author"
+        android:background="@drawable/about_author_background"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/text_about_project"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
