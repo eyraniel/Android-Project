@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "448128059581",
+    "firebase_url": "https://tfs-android-project.firebaseio.com",
+    "project_id": "tfs-android-project",
+    "storage_bucket": "tfs-android-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448128059581:android:d2095dae84da769c",
+        "android_client_info": {
+          "package_name": "ru.tinkoff.shishkova.tfsproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448128059581-44n4prbm7fp7s6hsj1dj461sd3hjqdhk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9J4fEPE4wJC05D1_c3kTfmnB4yTiVPOc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
