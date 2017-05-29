@@ -28,25 +28,9 @@ android {
             signingConfig signingConfigs.release
         }
         debug {
-            applicationIdSuffix ".debug"
         }
         prodDebug {
             initWith debug
-            applicationIdSuffix ".prodDebug"
-        }
-    }
-    productFlavors {
-        api16 {
-            minSdkVersion 16
-        }
-        api21 {
-            minSdkVersion 21
-            applicationIdSuffix ".api21"
-            versionNameSuffix "-api21"
-        }
-        api25 {
-            minSdkVersion 25
-            versionNameSuffix '-api25'
         }
     }
 }
@@ -60,7 +44,10 @@ dependencies {
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.android.support:recyclerview-v7:25.2.0'
-    compile 'com.google.firebase:firebase-core:10.2.6'
+    compile 'com.android.support:design:25.3.0'
+    compile 'com.google.firebase:firebase-database:10.2.0'
+    compile 'com.google.firebase:firebase-auth:10.2.0'
+    compile 'com.google.android.gms:play-services-auth:10.2.0'
     testCompile 'junit:junit:4.12'
 }
 

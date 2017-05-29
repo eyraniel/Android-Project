@@ -13,10 +13,10 @@ import com.google.firebase.database.Transaction;
 
 import java.util.ArrayList;
 
-import tinkoff.androidcourse.firebase.DefaultValueEventListener;
-import tinkoff.androidcourse.firebase.DialogItemValueListener;
-import tinkoff.androidcourse.firebase.OnTransactionComplete;
-import tinkoff.androidcourse.model.DialogItem;
+import ru.tinkoff.shishkova.tfsproject.firebase.DefaultValueEventListener;
+import ru.tinkoff.shishkova.tfsproject.firebase.DialogItemValueListener;
+import ru.tinkoff.shishkova.tfsproject.firebase.OnTransactionComplete;
+import ru.tinkoff.shishkova.tfsproject.ui.items.DialogItem;
 
 
 public class DialogRepository {

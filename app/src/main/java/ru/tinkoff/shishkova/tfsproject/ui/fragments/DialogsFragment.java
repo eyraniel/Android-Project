@@ -1,11 +1,7 @@
 package ru.tinkoff.shishkova.tfsproject.ui.fragments;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,26 +10,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-import java.util.Date;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.tinkoff.shishkova.tfsproject.model.db.ChatDbHelper;
-import ru.tinkoff.shishkova.tfsproject.ui.items.DialogItem;
-import ru.tinkoff.shishkova.tfsproject.ui.adapters.DialogsAdapter;
 import ru.tinkoff.shishkova.tfsproject.OnItemClickListener;
 import ru.tinkoff.shishkova.tfsproject.R;
+import ru.tinkoff.shishkova.tfsproject.ui.activities.AddDialogActivity;
 import ru.tinkoff.shishkova.tfsproject.ui.activities.DialogActivity;
-import ru.tinkoff.shishkova.tfsproject.model.db.DbContract;
-import ru.tinkoff.shishkova.tfsproject.App;
+import ru.tinkoff.shishkova.tfsproject.ui.adapters.DialogsAdapter;
+import ru.tinkoff.shishkova.tfsproject.ui.items.DialogItem;
 
 public class DialogsFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private DialogsAdapter adapter;
-    private SQLiteDatabase writableDatabase;
+    private RecyclerView.Adapter adapter;
 
     public static DialogsFragment newInstance() {
         DialogsFragment fragment = new DialogsFragment();
@@ -48,55 +40,17 @@ public class DialogsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dialogs, container, false);
-        ChatDbHelper dbHelper = new ChatDbHelper(getActivity());
-        writableDatabase = dbHelper.getWritableDatabase();
         initRecyclerView(view);
-        ArrayList<DialogItem> dialogItems = getPreviousDialogItems();
-        adapter.setItems(dialogItems);
-        Button addDialog = (Button)view.findViewById(R.id.add_dialog);
-        addDialog.setOnClickListener(new View.OnClickListener() {
+
+        Button buttonAddDialog = (Button)view.findViewById(R.id.btn_add_dialog);
+        buttonAddDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addDialogItem();
+                createDialog();
             }
         });
+
         return view;
-    }
-
-    private void addDialogItem() {
-        int itemCount = adapter.getItemCount();
-        DialogItem dialogItem = new DialogItem("Title is " + itemCount, "Description is " + itemCount, 0);
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(DbContract.DialogEntry.COLUMN_TITLE, dialogItem.getTitle());
-        contentValues.put(DbContract.DialogEntry.COLUMN_DESCRIPTION, dialogItem.getTitle());
-        contentValues.put(DbContract.DialogEntry.COLUMN_TIMESTAMP, new Date().getTime());
-        contentValues.put(DbContract.DialogEntry.COLUMN_TYPE, dialogItem.getType());
-        writableDatabase.insert(DbContract.DialogEntry.TABLE_NAME, null, contentValues);
-        adapter.addDialog(dialogItem);
-    }
-
-    @NonNull
-    private ArrayList<DialogItem> getPreviousDialogItems() {
-        Cursor cursor = writableDatabase.query(DbContract.DialogEntry.TABLE_NAME,
-                new String[]{
-                        DbContract.DialogEntry.COLUMN_TITLE,
-                        DbContract.DialogEntry.COLUMN_DESCRIPTION
-                },
-                null,
-                null,
-                null,
-                null,
-                null);
-        ArrayList<DialogItem> dialogItems = new ArrayList<>();
-        while (cursor.moveToNext()) {
-            int titleIndex = cursor.getColumnIndex(DbContract.DialogEntry.COLUMN_TITLE);
-            int descriptionIndex = cursor.getColumnIndex(DbContract.DialogEntry.COLUMN_DESCRIPTION);
-            String title = cursor.getString(titleIndex);
-            String description = cursor.getString(descriptionIndex);
-            dialogItems.add(new DialogItem(title, description, 0));
-        }
-        cursor.close();
-        return dialogItems;
     }
 
     private void initRecyclerView(View view) {
@@ -104,8 +58,7 @@ public class DialogsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        //adapter = new DialogsAdapter(createDataset(), new OnItemClickListener() {
-        adapter = new DialogsAdapter(new ArrayList<DialogItem>(), new OnItemClickListener() {
+        adapter = new DialogsAdapter(createDataset(), new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 //Toast.makeText(getActivity(), String.valueOf(position), Toast.LENGTH_SHORT).show();
@@ -117,19 +70,24 @@ public class DialogsFragment extends Fragment {
         recyclerView.addItemDecoration(dividerItemDecoration);
     }
 
-    /*private ArrayList<DialogItem> createDataset() {
-        ArrayList<DialogItem> list = new ArrayList<>();
-        list.add(new DialogItem("title", "desc", 1));
-        list.add(new DialogItem("title", "desc", 0));
-        list.add(new DialogItem("title", "desc", 1));
-        list.add(new DialogItem("title", "desc", 1));
-        list.add(new DialogItem("title", "desc", 0));
-        list.add(new DialogItem("title", "desc", 1));
+    private List<DialogItem> createDataset() {
+        List<DialogItem> list = new ArrayList<>();
+        list.add(new DialogItem("title", "desc"));
+        list.add(new DialogItem("title", "desc"));
+        list.add(new DialogItem("title", "desc"));
+        list.add(new DialogItem("title", "desc"));
+        list.add(new DialogItem("title", "desc"));
+        list.add(new DialogItem("title", "desc"));
         return list;
-    }*/
+    }
 
     private void openDialog() {
         Intent intent = new Intent(getActivity(), DialogActivity.class);
+        startActivity(intent);
+    }
+
+    private void createDialog() {
+        Intent intent = new Intent(getActivity(), AddDialogActivity.class);
         startActivity(intent);
     }
 }
